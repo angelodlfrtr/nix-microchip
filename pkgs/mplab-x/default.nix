@@ -15,7 +15,17 @@
 , gtk3
 , gtk-engine-murrine
 , libdrm
+, libx11
+, libxcb
+, libxcomposite
+, libxdamage
+, libxext
+, libxfixes
+, libxi
 , libxkbcommon
+, libxrandr
+, libxrender
+, libxtst
 , libusb1
 , libxslt
 , mesa
@@ -26,7 +36,6 @@
 , rsync
 , systemdLibs
 , writeShellApplication
-, xorg
 # , microchip-xc8
 , xc16
 # , microchip-xc32
@@ -58,16 +67,16 @@ let
       nss
       pango
       systemdLibs
-      xorg.libX11
-      xorg.libXcomposite
-      xorg.libXdamage
-      xorg.libXext
-      xorg.libXfixes
-      xorg.libXi
-      xorg.libXrandr
-      xorg.libXrender
-      xorg.libXtst
-      xorg.libxcb
+      libx11
+      libxcb
+      libxcomposite
+      libxdamage
+      libxext
+      libxfixes
+      libxi
+      libxrandr
+      libxrender
+      libxtst
     ];
   };
 
