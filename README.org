@@ -23,7 +23,8 @@ A Nix overlay for microchip development -- intended for use in per-project envir
 - [[#adding-packages][Adding packages]]
   - [[#xc16][XC16]]
   - [[#mplab-x][MPLAB-X]]
-  - [[#xc8-xc32-xc-dsc-etc][XC8, XC32, XC-DSC etc.]]
+  - [[#xc8][XC8]]
+  - [[#xc32-xc-dsc-etc][XC32, XC-DSC etc.]]
 - [[#improvement-opportunities][Improvement opportunities]]
   - [[#material--quality-of-life-improvements][Material / quality of life improvements]]
   - [[#pedantic--to-satisfy-my-inner-anal-retentive][Pedantic / to satisfy my inner anal retentive]]
@@ -41,6 +42,9 @@ I've refactored them a bit and packaged as a flake for instant gratification.
 Currently this provides packages for the following, to meet my own immediate needs:
 - xc16 v1.61
 - xc16 v2.10
+- xc8 v2.50
+- xc8 v3.10
+- xc8 v4.00
 - mplab-x v6.15
 - mplab-x v6.20
 - mplab-x v6.30
@@ -137,9 +141,15 @@ And then add a new line to [[./pkgs/default.nix]]:
 #+end_src
 
 
-** XC8, XC32, XC-DSC etc.
+** XC8
 
-Adding packages for the other Microchip compilers should (I believe) be as simple as copying the XC16 subtree and making some minor adaptations. Another github user, =Fuwn=, has forked this repo and already done so for XC32 v4.40 -- [[https://github.com/Fuwn/nix-microchip][here]].
+XC8 is packaged in the same manner as XC16 -- adding a new version just requires a new version/hash file in [[./pkgs/xc8]] and a line in [[./pkgs/default.nix]].
+
+The =mplab-x= package bundles XC16 only. Use the =mplab-xc8= package for an MPLAB-X wrapped with XC8 instead, or override the =xc8= / =xc16= parameters of the mplab-x package to bundle any combination.
+
+** XC32, XC-DSC etc.
+
+Adding packages for the other Microchip compilers should (I believe) be as simple as copying the XC16 or XC8 subtree and making some minor adaptations. Another github user, =Fuwn=, has forked this repo and already done so for XC32 v4.40 -- [[https://github.com/Fuwn/nix-microchip][here]].
 
 
 * Improvement opportunities

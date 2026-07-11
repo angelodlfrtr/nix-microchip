@@ -36,8 +36,8 @@
 , rsync
 , systemdLibs
 , writeShellApplication
-# , microchip-xc8
-, xc16
+, xc8 ? null
+, xc16 ? null
 # , microchip-xc32
 # , microchip-xc-dsc
 }:
@@ -83,8 +83,6 @@ let
   stage2 = writeShellApplication {
     name = "mplab_ide-wrapper";
     runtimeInputs = [ execline fuse-overlayfs rsync ];
-    # mkdir "$rt/overlay/opt/microchip/xc8"
-    # ln -s ${microchip-xc8} "$rt/overlay/opt/microchip/xc8/v${microchip-xc8.version}"
     # mkdir "$rt/overlay/opt/microchip/xc32"
     # ln -s ${microchip-xc32} "$rt/overlay/opt/microchip/xc32/v${microchip-xc32.version}"
     # mkdir "$rt/overlay/opt/microchip/xc-dsc"
@@ -109,8 +107,14 @@ let
       done
 
 
-      mkdir "$rt/overlay/opt/microchip/xc16"
-      ln -s ${xc16} "$rt/overlay/opt/microchip/xc16/v${xc16.version}"
+      ${lib.optionalString (xc16 != null) ''
+        mkdir "$rt/overlay/opt/microchip/xc16"
+        ln -s ${xc16} "$rt/overlay/opt/microchip/xc16/v${xc16.version}"
+      ''}
+      ${lib.optionalString (xc8 != null) ''
+        mkdir "$rt/overlay/opt/microchip/xc8"
+        ln -s ${xc8} "$rt/overlay/opt/microchip/xc8/v${xc8.version}"
+      ''}
 
       # Make and mount (with FUSE) the newroot subdirectory.
       mkdir "$rt/newroot"
