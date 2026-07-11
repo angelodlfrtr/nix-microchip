@@ -43,6 +43,7 @@ Currently this provides packages for the following, to meet my own immediate nee
 - xc16 v2.10
 - mplab-x v6.15
 - mplab-x v6.20
+- mplab-x v6.30
 
 Adding additional versions is trivial -- see instructions in the section [[Adding packages]].
 

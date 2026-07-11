@@ -10,9 +10,10 @@ pkgs : rec {
    xc16_1_61 = pkgs.callPackage ./xc16/1.61.nix { };
    # xc16 = xc16_2_10; #i.e. default to latest version we've bothered to package
    xc16 = xc16_1_61; #i.e. default to the version we're using for current production builds
+   mplab-x-unwrapped_6_30 = pkgs.callPackage ./mplab-x-unwrapped/6.30.nix { };
    mplab-x-unwrapped_6_20 = pkgs.callPackage ./mplab-x-unwrapped/6.20.nix { };
    mplab-x-unwrapped_6_15 = pkgs.callPackage ./mplab-x-unwrapped/6.15.nix { };
-   mplab-x-unwrapped = mplab-x-unwrapped_6_20;
+   mplab-x-unwrapped = mplab-x-unwrapped_6_30;
    #FIXME: Rework this to pass an xc16 version as a parameter to mplab-x package rather than abusing the default..
    mplab-x = pkgs.callPackage ./mplab-x { inherit mplab-x-unwrapped xc16; };
 

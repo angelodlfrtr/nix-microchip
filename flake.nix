@@ -39,7 +39,7 @@
       #   };
     in
     {
-      formatter.${system} = pkgs.nixfmt-rfc-style;
+      formatter.${system} = pkgs.nixfmt;
 
       # Your custom packages
       # Accessible through 'nix build', 'nix shell', etc
