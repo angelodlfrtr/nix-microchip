@@ -126,6 +126,10 @@ let
       mount --rbind /home "$rt/newroot/home"
       mount --rbind /proc "$rt/newroot/proc"
       mount --rbind /run  "$rt/newroot/run"
+      # N.B. /sys must be a real sysfs mount: fuse-overlayfs cannot traverse it as
+      # a lower layer, and without it libusb enumerates no USB devices, so MPLAB
+      # never sees programmers/debuggers (PICkit, ICD, ...).
+      mount --rbind /sys  "$rt/newroot/sys"
       mount --rbind /tmp  "$rt/newroot/tmp"
       mount --rbind /var  "$rt/newroot/var"
 
